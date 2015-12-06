@@ -9,5 +9,6 @@ exports.index = function(req, res){
 
 exports.partials = function (req, res) {
   var name = req.params.name;
-  res.render('partials/' + name);
+  var type = req.params.type;
+  res.render('partials/' + type + '/' + name);
 };
