@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "body-parser": "latest",
-    "express-error-handler": "latest",
     "express": "latest",
+    "express-error-handler": "latest",
+    "express-session": "^1.12.1",
     "jade": "latest",
     "method-override": "latest",
-    "morgan": "latest",
-    "mongoose":"latest"
+    "mongoose": "latest",
+    "morgan": "latest"
   }
 }

@@ -16,23 +16,23 @@
 //GET
 exports.getAll = function(req,res){
 	req.model.getAll(function(data){
-		res.json({
-			posts: data
-		});
+		res.json(data);
 	});
 
 };
 
 exports.getOne = function(req,res){
 	var id = req.params.id;
-	req.model.getOne(id, function(err, data){
+	var callback = function(err,data){
 		if (err)
-			res.json(false);
+			res.status(404).send("Not found");
 		else
-			res.json({
-				post: data
-			});
-	});
+			res.json(data);
+	};
+	if (id.length > 15)
+		req.model.getOne(id, callback);
+	else
+		req.model.getByAttr("name",id,callback);
 	
 };
 
@@ -63,6 +63,8 @@ exports.remove= function(req,res){
 			res.json(true);
 	});
 };
+
+
 
 
 

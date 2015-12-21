@@ -1,9 +1,10 @@
-p There are {{posts.length}} posts
-div(ng-repeat='post in posts')
-	h3 {{post.title}}
-	div {{post.text}}
-	a(href='posts/{{post._id}}') More
-	| -
-	a(href='posts/edit/{{post._id}}') Edit
-	| -
-	a(href='posts/delete/{{post._id}}') Delete
+div(ng-controller='IndexCtrl')
+	p There are {{data.length}} posts
+	div(ng-repeat='post in data')
+		h3 {{post.title}} by {{post.username}}
+		div {{post.text}}
+		a(href='posts/{{post._id}}') More
+		| -
+		a(href='posts/edit/{{post._id}}', ng-show="loggedIn") Edit
+		| -
+		a(href='posts/delete/{{post._id}}' ng-show="loggedIn") Delete

@@ -9,6 +9,7 @@ var express = require('express'),
   errorHandler = require('express-error-handler'),
   morgan = require('morgan'),
   mongoose = require('mongoose'),
+  session = require('express-session'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
@@ -36,6 +37,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(morgan('dev'));
+app.use(session({secret: 'keyboard cat', resave: false,saveUninitialized: true}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());

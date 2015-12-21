@@ -6,6 +6,17 @@ module.exports = function(model){
 		cb(data);
 		});
 	};
+	
+	model.statics.getByAttr = function(key, value, cb){
+		var searchObj = {};
+		searchObj[key] = value;
+		this.findOne( searchObj, function(err,data){
+			if(data != null) 
+				cb(err,data);
+			else
+				cb("error");
+		});
+	};
 
 	model.statics.getOne = function(id,cb){
 		this.findById(id, function(err,data){
