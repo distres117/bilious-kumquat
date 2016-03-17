@@ -1,11 +1,5 @@
-'use strict';
-
-/* Services */
-
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', ['ngCookies'])
+define(function(){
+    angular.module('myApp.services', ['ngCookies'])
     .value('version', '0.1')
     .factory('AuthService', function($http, $cookies, $rootScope){
         return {
@@ -45,4 +39,6 @@ angular.module('myApp.services', ['ngCookies'])
         }
         
     });
+});
+
 
